@@ -13,7 +13,8 @@ public class Findtherepeatingandmissingnumber {
         System.out.println(Arrays.toString(ans1));
         int[] ans2=better(arr);
         System.out.println(Arrays.toString(ans2));
-
+        int[] ans3 = optimal(arr);
+        System.out.println(Arrays.toString(ans3));
     }
     private static int[] brute(int[] arr) {
         int[] ans = new int[2];
@@ -59,5 +60,38 @@ public class Findtherepeatingandmissingnumber {
             }
         }
         return new int[]{repeating, missing};
+    }
+    private static int[] optimal(int[] arr) {
+        int n = arr.length;
+        int xr = 0;
+        for (int i = 0; i < n; i++) {
+            xr ^= arr[i];
+            xr ^= (i + 1);
+        }
+        int number = xr & -xr;
+        int zero = 0;
+        int one = 0;
+        for (int i = 0; i < n; i++) {
+            if ((arr[i] & number) != 0) {
+                one ^= arr[i];
+            } else {
+                zero ^= arr[i];
+            }
+            if (((i + 1) & number) != 0) {
+                one ^= (i + 1);
+            } else {
+                zero ^= (i + 1);
+            }
+        }
+        int cnt = 0;
+        for (int i = 0; i < n; i++) {
+            if (arr[i] == zero) {
+                cnt++;
+            }
+        }
+        if (cnt == 2) {
+            return new int[]{zero, one};
+        }
+        return new int[]{one, zero};
     }
 }
