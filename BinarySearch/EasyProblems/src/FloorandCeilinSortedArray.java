@@ -13,34 +13,34 @@ public class FloorandCeilinSortedArray {
         int ciel = findCeil(arr, x);
         System.out.println(floor + " " + ciel);
     }
-    static int findFloor(int[] arr, int x) {
-        int ans = -1;
-        int left = 0;
-        int right = arr.length - 1;
-        while (left <= right) {
-            int mid = left + (right - left) / 2;
+    private static int findFloor(int[] arr, int x) {
+        int floor = -1;
+        int low = 0;
+        int high = arr.length - 1;
+        while (low <= high) {
+            int mid = (low + high) / 2;
             if (arr[mid] <= x) {
-                ans = mid;
-                left = mid + 1;
-            } else  {
-                right = mid - 1;
+                floor = mid;
+                low = mid + 1;
+            } else {
+                high = mid - 1;
             }
         }
-        return ans;
+        return floor;
     }
-    static int findCeil(int[] arr, int x) {
-        int ans = -1;
-        int left = 0;
-        int right = arr.length - 1;
-        while (left <= right) {
-            int mid = left + (right - left) / 2;
+    private static int findCeil(int[] arr, int x) {
+        int ceil = -1;
+        int low = 0;
+        int high = arr.length - 1;
+        while (low <= high) {
+            int mid = (low + high) / 2;
             if (arr[mid] >= x) {
-                ans = mid;
-                right = mid - 1;
-            } else  {
-                left = mid + 1;
+                ceil = mid;
+                high = mid - 1;
+            } else {
+                low = mid + 1;
             }
         }
-        return ans;
+        return ceil;
     }
 }
