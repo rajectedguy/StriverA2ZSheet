@@ -13,9 +13,8 @@ public class SearchinRotatedSortedArray {
         System.out.println(ans);
     }
 
-    public static int search(int[] nums, int target) {
-        int ans = 0;
-        int left = 0;
+    private static int search(int[] nums, int target) {
+        int  left = 0;
         int right = nums.length - 1;
         while (left <= right) {
             int mid = left + (right - left) / 2;
@@ -28,10 +27,10 @@ public class SearchinRotatedSortedArray {
                 }else  {
                     left = mid + 1;
                 }
-            }  else {
-                if (nums[mid] < target && target <= nums[right]) {
+            }else {
+                if (nums[right] <= target && target < nums[mid]) {
                     left = mid + 1;
-                } else   {
+                }else  {
                     right = mid - 1;
                 }
             }
