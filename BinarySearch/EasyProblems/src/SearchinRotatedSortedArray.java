@@ -27,10 +27,10 @@ public class SearchinRotatedSortedArray {
                 }else  {
                     left = mid + 1;
                 }
-            }else {
-                if (nums[right] <= target && target < nums[mid]) {
+            } else {
+                if (nums[mid] < target && target <= nums[right]) {
                     left = mid + 1;
-                }else  {
+                } else {
                     right = mid - 1;
                 }
             }
