@@ -13,7 +13,7 @@ public class NumberofOccurrence {
         int ans = countFreq(arr, target);
         System.out.println(ans);
     }
-    public static int countFreq(int[] nums, int target) {
+    private static int countFreq(int[] nums, int target) {
         int left = 0;
         int right = nums.length - 1;
         int first = -1;
