@@ -12,30 +12,30 @@ public class SearchinRotatedSortedArrayII {
         boolean found = search(arr,target);
         System.out.println(found?"Found":"Not found");
     }
-    public static boolean search(int[] nums, int target) {
-        int left = 0;
-        int right = nums.length - 1;
-        while (left <= right) {
-            int mid = left + (right - left) / 2;
+    private static boolean search(int[] nums, int target) {
+        int low = 0;
+        int high = nums.length - 1;
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
             if (nums[mid] == target) {
                 return true;
             }
-            if (nums[mid] == nums[left] && nums[mid] == nums[right]) {
-                left = left + 1;
-                right = right - 1;
+            if (nums[mid] == nums[low]  && nums[high] == nums[mid]) {
+                low = low + 1;
+                high = high - 1;
                 continue;
             }
-            if (nums[left] <= nums[mid]) {
-                if (nums[left] <= target && target <= nums[mid]) {
-                    right = mid - 1;
-                }else {
-                    left = mid + 1;
+            if (nums[low] <= nums[mid]) {
+                if (nums[low] <= target && target < nums[mid]) {
+                    high = mid - 1;
+                }else  {
+                    low = mid + 1;
                 }
-            } else  {
-                if (nums[mid] <= target && target <= nums[right]) {
-                    left = mid + 1;
-                }else {
-                    right = mid - 1;
+            } else {
+                if (nums[mid] < target && target <= nums[high]) {
+                    low = mid + 1;
+                } else {
+                    high = mid - 1;
                 }
             }
         }
