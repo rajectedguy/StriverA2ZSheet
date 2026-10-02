@@ -1,5 +1,5 @@
-public class BinarySearchIterative {
-    public static int binarySearch(int[] arr, int key) {
+ class BinarySearchIterative {
+    private static int binarySearch(int[] arr, int key) {
         int low = 0;
         int high = arr.length - 1;
         while (low <= high) {
@@ -14,7 +14,7 @@ public class BinarySearchIterative {
         }
         return -1;
     }
-    private static void main(String[] args) {
+    public static void main(String[] args) {
         int[] arr = {10, 20, 30, 40, 50, 60, 70};
         int key = 50;
         int result = binarySearch(arr, key);
